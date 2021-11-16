@@ -1,11 +1,11 @@
 import datetime as dt
-from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db import models
-from django.contrib.auth.models import (AbstractUser,
-                                        BaseUserManager)
+
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.core.exceptions import ValidationError
-from django_utils.choices import Choice, Choices
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_utils.choices import Choice, Choices
 from rest_framework_simplejwt.tokens import AccessToken
 
 
@@ -94,8 +94,7 @@ class User(AbstractUser):
         return self.email
 
     def _generate_jwt_token(self):
-        token = AccessToken.for_user(self)
-        return token
+        return AccessToken.for_user(self)
 
     @property
     def role_is_user(self):

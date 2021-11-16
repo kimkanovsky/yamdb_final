@@ -2,26 +2,26 @@ import random
 import string
 
 import django_filters.rest_framework
-from django.db.models import Avg
 from django.core.mail import send_mail
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
-from rest_framework import status, viewsets, filters
+from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import User, Review, Comment, Title, Genre, Category
-from .permissions import (IsAdminPermission,
-                          IsAdminOrReadOnlyPermission, IsAuthorOrStaffReadOnly)
-from .serializers import (RegistrationSerializer, TokenSerializer,
-                          UserSerializer, TitleWriteSerializer,
-                          TitleReadSerializer, GenreSerializer,
-                          CategorySerializer, ReviewSerializer,
-                          CommentSerializer)
-from .filters import TitleFilter
-from .custom_views import CreateListDestroyViewSet
 from .custom_pagination import CustomPaginationClass
+from .custom_views import CreateListDestroyViewSet
+from .filters import TitleFilter
+from .models import Category, Comment, Genre, Review, Title, User
+from .permissions import (IsAdminOrReadOnlyPermission, IsAdminPermission,
+                          IsAuthorOrStaffReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, RegistrationSerializer,
+                          ReviewSerializer, TitleReadSerializer,
+                          TitleWriteSerializer, TokenSerializer,
+                          UserSerializer)
 
 
 class RegistrationAPIView(APIView):

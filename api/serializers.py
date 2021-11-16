@@ -1,10 +1,9 @@
 import datetime as dt
+
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 
-from .models import (User, Comment,
-                     Review, Title,
-                     Genre, Category, RoleChoices)
+from .models import Category, Comment, Genre, Review, RoleChoices, Title, User
 
 
 class UserSerializer(serializers.ModelSerializer):
