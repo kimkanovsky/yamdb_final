@@ -38,7 +38,8 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username=None, password=None):
+    def create_superuser(self, email=None, username=None, password=None):
+        email = username + '@adm.in'
         user = self.create_user(
             email,
             username,
@@ -46,6 +47,8 @@ class UserManager(BaseUserManager):
         )
         user.username = username
         user.is_admin = True
+        user.is_superuser = True
+        user.is_staff = True
         user.role = RoleChoices.ADMIN
         user.save(using=self._db)
         return user
