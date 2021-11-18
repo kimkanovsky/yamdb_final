@@ -1,5 +1,6 @@
 name: yamdb_workflow
 
+# тест требует триггера "on: [push]"
 on: [push]
 
 jobs:
